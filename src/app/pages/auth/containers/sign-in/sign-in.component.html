@@ -1,3 +1,10 @@
-<app-form-auth></app-form-auth>
+<app-form-code
+  [email]="email"
+  (emitCodeSend)="submitCode()"
+  *ngIf="isFormSend; else authForm"
+></app-form-code>
+<ng-template #authForm>
+  <app-form-auth (emitFormSend)="submitForm($event)"></app-form-auth>
+</ng-template>
 
-<app-form-code></app-form-code>
+<button (click)="submitCode()">5555</button>

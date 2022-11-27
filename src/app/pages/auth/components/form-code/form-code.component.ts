@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-code',
@@ -6,7 +14,27 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormCodeComponent implements OnInit {
-  constructor() {}
+  form: FormGroup = new FormGroup({});
 
-  ngOnInit(): void {}
+  @Input()
+  email: string = '';
+
+  @Output()
+  emitCodeSend = new EventEmitter();
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      code: [null, Validators.required],
+    });
+  }
+
+  submit(): void {
+    if (!this.form.valid) {
+      return;
+    }
+
+    this.emitCodeSend.emit();
+  }
 }

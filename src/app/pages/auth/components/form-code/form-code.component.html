@@ -1,1 +1,26 @@
-<p>form-code works!</p>
+<form class="form" [formGroup]="form" (submit)="submit()">
+  <h1>На почту {{ email }} отправлен код</h1>
+  <div class="form__line">
+    <mat-form-field
+      class="cm-form-field cm-form-field_width_full"
+      appearance="fill"
+    >
+      <mat-label>Code</mat-label>
+      <input type="text" matInput formControlName="code" />
+      <mat-error *ngIf="form.hasError('required', 'code')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form__line">
+    <button
+      type="submit"
+      color="primary"
+      mat-flat-button
+      class="cm-button cm-button_size_l cm-button_with_full"
+    >
+      <ng-container>Ok</ng-container>
+    </button>
+  </div>
+</form>

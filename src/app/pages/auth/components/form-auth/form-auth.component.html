@@ -4,14 +4,57 @@
       class="cm-form-field cm-form-field_width_full"
       appearance="fill"
     >
-      <mat-label i18n>Email</mat-label>
+      <mat-label>Email</mat-label>
       <input type="email" matInput formControlName="email" />
-      <mat-error *ngIf="form.hasError('required', 'email')" i18n>
+      <mat-error *ngIf="form.hasError('required', 'email')">
         This field is required
       </mat-error>
-      <mat-error *ngIf="form.hasError('pattern', 'email')" i18n>
+      <mat-error *ngIf="form.hasError('pattern', 'email')">
         Enter the correct email
       </mat-error>
     </mat-form-field>
+  </div>
+
+  <div class="form__line">
+    <mat-form-field
+      class="cm-form-field cm-form-field_width_full"
+      appearance="fill"
+    >
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" />
+      <mat-error *ngIf="form.hasError('required', 'password')">
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="form.hasError('minlength', 'password')">
+        Enter at minimum 6 signs
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form__line">
+    <mat-form-field
+      class="cm-form-field cm-form-field_width_full"
+      appearance="fill"
+    >
+      <mat-label>Confirm password</mat-label>
+      <input type="password" matInput formControlName="confirmPassword" />
+      <mat-error *ngIf="form.hasError('required', 'confirmPassword')">
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="form.hasError('passwordNotMatch', 'confirmPassword')">
+        The passwords don't match
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form__line">
+    <button
+      type="submit"
+      color="primary"
+      mat-flat-button
+      class="cm-button cm-button_size_l cm-button_with_full"
+    >
+      <ng-container>Ok</ng-container>
+    </button>
   </div>
 </form>

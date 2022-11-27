@@ -1,12 +1,49 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import { UserDataStateInterface } from 'src/app/shared/types/state.interface';
+
+import * as UserActions from 'src/app/store/actions/user.actions';
+import * as UserSelector from 'src/app/store/selectors/user.selectors';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInComponent implements OnInit {
-  constructor() {}
+export class SignInComponent implements OnInit, OnDestroy {
+  isFormSend = false;
+  email = '';
 
-  ngOnInit(): void {}
+  private readonly _unsubscribeAll$ = new Subject<void>();
+
+  constructor(private store: Store<any>) {}
+
+  ngOnInit(): void {
+    this.store
+      .pipe(select(UserSelector.selectUser), takeUntil(this._unsubscribeAll$))
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll$.next();
+    this._unsubscribeAll$.complete();
+  }
+
+  submitForm(data: string): void {
+    this.email = data;
+    this.isFormSend = true;
+  }
+
+  submitCode(): void {
+    // this.userService.getUser().subscribe();
+    this.store.dispatch(UserActions.getUser());
+  }
 }
