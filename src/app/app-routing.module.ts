@@ -9,6 +9,11 @@ const routes: Routes = [
     component: ClearLayoutComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'auth',
+      },
+      {
         path: 'auth',
         loadChildren: () =>
           import('./pages/auth/auth.module').then((mod) => mod.AuthModule),

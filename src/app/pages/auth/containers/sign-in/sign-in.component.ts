@@ -37,7 +37,6 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   submitCode(): void {
-    // this.userService.getUser().subscribe();
     this.store.dispatch(UserActions.getUser());
   }
 }

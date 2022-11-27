@@ -30,8 +30,22 @@ export class FormAuthComponent implements OnInit {
           Validators.pattern(this.regexpService.EMAIL_REGEXP),
         ],
       ],
-      password: [null, [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [null, Validators.required],
+      password: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+          Validators.pattern(this.regexpService.PASSWORD_REGEXP),
+        ],
+      ],
+      confirmPassword: [
+        null,
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(20),
+        Validators.pattern(this.regexpService.PASSWORD_REGEXP),
+      ],
     });
   }
 

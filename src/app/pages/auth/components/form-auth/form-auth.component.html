@@ -28,6 +28,9 @@
       <mat-error *ngIf="form.hasError('minlength', 'password')">
         Enter at minimum 6 signs
       </mat-error>
+      <mat-error *ngIf="form.hasError('pattern', 'password')">
+        Error
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -43,6 +46,9 @@
       </mat-error>
       <mat-error *ngIf="form.hasError('passwordNotMatch', 'confirmPassword')">
         The passwords don't match
+      </mat-error>
+      <mat-error *ngIf="form.hasError('pattern', 'confirmPassword')">
+        Error
       </mat-error>
     </mat-form-field>
   </div>
