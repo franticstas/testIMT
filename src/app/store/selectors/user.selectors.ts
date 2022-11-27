@@ -6,9 +6,9 @@ export interface UserState {
   users: UserDataStateInterface;
 }
 
-const selectUsers = (state: any) => state.users;
+const selectUsers = (state: UserState) => state.users;
 
 export const selectUser = createSelector(
   selectUsers,
-  (state: UserResponseInterface) => state.results
+  (state: UserDataStateInterface) => state.usersList
 );

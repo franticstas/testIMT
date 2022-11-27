@@ -12,7 +12,7 @@ import * as UserSelector from 'src/app/store/selectors/user.selectors';
 })
 export class UserComponent implements OnInit, OnDestroy {
   private readonly _unsubscribeAll$ = new Subject<void>();
-  userList: UserInterface[] = [];
+  user: UserInterface | null = null;
 
   constructor(private store: Store<any>) {}
 
@@ -21,8 +21,10 @@ export class UserComponent implements OnInit, OnDestroy {
       .pipe(select(UserSelector.selectUser), takeUntil(this._unsubscribeAll$))
       .subscribe((data) => {
         console.log(data);
-
-        this.userList = data;
+        if (data) {
+          this.user = data[0];
+          console.log(this.user);
+        }
       });
   }
 
