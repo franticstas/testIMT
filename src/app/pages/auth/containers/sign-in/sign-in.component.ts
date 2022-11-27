@@ -24,13 +24,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<any>) {}
 
-  ngOnInit(): void {
-    this.store
-      .pipe(select(UserSelector.selectUser), takeUntil(this._unsubscribeAll$))
-      .subscribe((data) => {
-        console.log(data);
-      });
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this._unsubscribeAll$.next();

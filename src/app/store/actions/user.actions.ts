@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { UserResponseInterface } from 'src/app/shared/types/response.interface';
-import { UserInterface } from 'src/app/shared/types/user.interface';
 
 export const getUser = createAction('[User] Get user');
 

@@ -19,7 +19,10 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      users: fromUserReducer.reducer,
+    }),
+    EffectsModule.forRoot([UsersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: true, // Restrict extension to log-only mode
@@ -28,10 +31,6 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     LayoutModule,
     HttpClientModule,
-    StoreModule.forRoot({
-      users: fromUserReducer.reducer,
-    }),
-    EffectsModule.forRoot([UsersEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

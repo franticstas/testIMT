@@ -1,7 +1,7 @@
 import { UserInterface } from './user.interface';
 
 export interface UserDataStateInterface {
-  userList: UserInterface[] | null;
+  usersList: UserInterface[] | null;
 }
 
 export interface AppStateInterface {

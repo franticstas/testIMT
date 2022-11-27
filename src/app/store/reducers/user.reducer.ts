@@ -1,9 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import { UserResponseInterface } from 'src/app/shared/types/response.interface';
 import { UserDataStateInterface } from 'src/app/shared/types/state.interface';
 import * as UserActions from '../actions/user.actions';
 
 const initialState: UserDataStateInterface = {
-  userList: [],
+  usersList: [],
 };
 
 const userReducer = createReducer(
@@ -11,7 +12,7 @@ const userReducer = createReducer(
   on(UserActions.getUser, () => ({ ...initialState })),
   on(UserActions.getUserSuccess, (state, { userData }) => ({
     ...state,
-    userList: userData.results,
+    usersList: userData.results,
   }))
 );
 

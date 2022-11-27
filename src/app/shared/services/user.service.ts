@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserResponseInterface } from '../types/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUser(): Observable<any> {
-    return this.http.get<any>('https://randomuser.me/api');
+  getUser(): Observable<UserResponseInterface> {
+    return this.http.get<UserResponseInterface>('https://randomuser.me/api');
   }
 }
