@@ -1,1 +1,17 @@
-<p>form-auth works!</p>
+<form class="form" [formGroup]="form" (submit)="submit()">
+  <div class="form__line">
+    <mat-form-field
+      class="cm-form-field cm-form-field_width_full"
+      appearance="fill"
+    >
+      <mat-label i18n>Email</mat-label>
+      <input type="email" matInput formControlName="email" />
+      <mat-error *ngIf="form.hasError('required', 'email')" i18n>
+        This field is required
+      </mat-error>
+      <mat-error *ngIf="form.hasError('pattern', 'email')" i18n>
+        Enter the correct email
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

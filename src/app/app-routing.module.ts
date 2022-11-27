@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClearLayoutComponent } from './layout/clear-layout/clear-layout.component';
+import { NotFoundLayoutComponent } from './layout/not-found-layout/not-found-layout.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
           import('./pages/auth/auth.module').then((mod) => mod.AuthModule),
       },
     ],
+  },
+
+  {
+    path: '**',
+    component: NotFoundLayoutComponent,
   },
 ];
 

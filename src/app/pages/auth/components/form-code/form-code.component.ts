@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-form-code',
   templateUrl: './form-code.component.html',
-  styleUrls: ['./form-code.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormCodeComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
